@@ -18,10 +18,21 @@ class Transaction:
 				output = TransactionOutput(blockchain)
 				self.outputs.append(output)	
 		self.lockTime = uint4(blockchain)
+
+	def get_object(self):
+		return {
+			"version": self.version,
+			"sequence": self.sequence,
+			"input count": self.input_count,
+			"inputs": [tx.get_object() for tx in self.inputs],
+			"output count": self.outCount,
+			"outputs": [tx.get_object() for tx in self.outputs],
+			"lock time": self.lockTime
+		}
 	
 	def to_string(self):
 		print(f"")
-		print(f"{'='*20}  No. {self.seq} Transaction {'='*20}")
+		print(f"{'='*20}  No. {self.sequence} Transaction {'='*20}")
 		print(f"Tx Version:\t {self.version}")
 		print(f"Inputs:\t\t {self.input_count}")
 		for input in self.inputs:

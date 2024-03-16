@@ -25,7 +25,7 @@ class Block:
 
             for i in range(self.tx_count):
                 tx = Transaction(blockchain)
-                tx.seq = i
+                tx.sequence = i
                 self.tx_list.append(tx)
         else:
             self.continue_parsing = False
@@ -51,6 +51,16 @@ class Block:
     
     def set_header(self, blockchain):
         self.block_header = BlockHeader(blockchain)
+
+    def get_object(self):
+        return {
+            "magic number": self.magic_number,
+            "block size": self.block_size,
+            "block header": self.block_header.get_object(),
+            "transaction count": self.tx_count,
+            "transaction list": [tx.get_object() for tx in self.tx_list]
+        }
+
 
     def to_string(self):
         print(f"")

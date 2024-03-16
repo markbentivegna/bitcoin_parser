@@ -10,6 +10,16 @@ class BlockHeader:
         self.bits = uint4(blockchain)
         self.nonce = uint4(blockchain)
 
+    def get_object(self):
+        return {
+            "version": self.version,
+            "previous hash": hash_string(self.previous_hash),
+            "merkle root": hash_string(self.merkle_hash),
+            "timestamp": self.decode_time(self.time),
+            "difficulty": self.bits,
+            "nonce": self.nonce
+        }
+
     def to_string(self):
         print(f"Version:\t {self.version}")
         print(f"Previous Hash:\t {hash_string(self.previous_hash)}")
