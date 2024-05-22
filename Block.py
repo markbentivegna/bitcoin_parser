@@ -52,13 +52,13 @@ class Block:
     def set_header(self, blockchain):
         self.block_header = BlockHeader(blockchain)
 
-    def get_object(self):
+    def get_object_dict(self):
         return {
             "magic number": self.magic_number,
             "block size": self.block_size,
-            "block header": self.block_header.get_object(),
+            "block header": self.block_header.get_object_dict(),
             "transaction count": self.tx_count,
-            "transaction list": [tx.get_object() for tx in self.tx_list]
+            "transaction list": [tx.get_object_dict() for tx in self.tx_list]
         }
 
 

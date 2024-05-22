@@ -23,7 +23,7 @@ for i in range(1):
             continue_parsing = block.continue_parsing
             if continue_parsing:
                 # block.to_string()
-                current_block_objects.append(block.get_object())
+                current_block_objects.append(block.get_object_dict())
             counter += 1
             print(f"{'#'*20} Block counter number: {counter} {'#'*20}")
             if counter >= block_number and block_number != 0xFF:

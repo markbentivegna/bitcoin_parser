@@ -10,7 +10,7 @@ class BlockHeader:
         self.bits = uint4(blockchain)
         self.nonce = uint4(blockchain)
 
-    def get_object(self):
+    def get_object_dict(self):
         return {
             "version": self.version,
             "previous hash": hash_string(self.previous_hash),
