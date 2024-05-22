@@ -3,13 +3,16 @@ from opcodes import *
 
 class TransactionOutput:
 	def __init__(self, blockchain):
-		self.value = uint8(blockchain)
+		self.amount = uint8(blockchain)
 		self.script_length = varint(blockchain)
 		self.pubkey = blockchain.read(self.script_length)
 		
-	def get_object(self):
+	def get_bytes_string(self):
+		return hash_string(encode_uint8(self.amount)) + compact_size(self.script_length)[:2] + hash_string(self.pubkey)
+
+	def get_object_dict(self):
 		return {
-			"value": self.value,
+			"amount": self.amount,
 			"script length": self.script_length,
 			"script pubkey": self.decode_script_pubkey(self.pubkey),
 			"transaction type": self.transaction_type,
@@ -18,7 +21,7 @@ class TransactionOutput:
 		}
 	
 	def to_string(self):
-		print(f"\tValue:\t\t {self.value} Satoshi")
+		print(f"\tAmount:\t\t {self.amount} Satoshi")
 		print(f"\tScript Len:\t {self.script_length}")
 		print(f"\tScriptPubkey:\t {self.decode_script_pubkey(self.pubkey)}")
 		

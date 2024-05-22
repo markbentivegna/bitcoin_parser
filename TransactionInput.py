@@ -8,8 +8,12 @@ class TransactionInput:
 		self.script_length = varint(blockchain)
 		self.script_sig = blockchain.read(self.script_length)
 		self.seq_no = uint4(blockchain)
-	
-	def get_object(self):
+		self.decode_script_sig(self.script_sig)
+
+	def get_bytes_string(self):
+		return str_to_little_endian(self.prev_hash) + hash_string(encode_uint4(self.tx_out_id)) + compact_size(self.script_length)[:2] + hash_string(self.script_sig) + hash_string(encode_uint4(self.seq_no))
+
+	def get_object_dict(self):
 		return {
 			"prev hash": hash_string(self.prev_hash),
 			"tx out index": self.decode_out_idx(self.tx_out_id),

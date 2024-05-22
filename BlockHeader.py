@@ -29,5 +29,5 @@ class BlockHeader:
         print(f"Nonce:\t\t {self.nonce}")
 
     def decode_time(self, time):
-        utc_time = datetime.utcfromtimestamp(time)
+        utc_time = datetime.fromtimestamp(time)
         return utc_time.strftime("%Y-%m-%d %H:%M:%S.%f+00:00 (UTC)")
