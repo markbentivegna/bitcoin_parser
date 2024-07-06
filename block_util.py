@@ -46,18 +46,14 @@ def varint(stream):
     return -1
 
 def compact_size(value):
-    if value < 252:
+    if value <= 252:
         return hash_string(struct.pack('B', value))
     if value > 252 and value <= 65535:
-        return f"FD{hash_string(encode_uint2(value))}"
+        return f"fd{hash_string(encode_uint2(value))}"
     if value > 65535 and value <= 4294967295:
-        return f"FE{hash_string(encode_uint4(value))}"
+        return f"fe{hash_string(encode_uint4(value))}"
     else:
-        return f"FF{hash_string(encode_uint8(value))}"
-
-def int_to_little_endian(value, size):
-
-    return struct.pack('Q', value)
+        return f"ff{hash_string(encode_uint8(value))}"
 
 def str_to_little_endian(value):
     big = bytearray(value)
@@ -84,12 +80,12 @@ def hash_to_address(key_hash):
 
     return base58.b58encode( bytes(bytearray.fromhex(key_hash + checksum)) ).decode('utf-8')
 
-def decode_script(hex_string):
-    DATADIR = "/mnt/raid1_ssd_4tb/datasets/bitcoin/bitcoin-25.0/.bitcoin/"
-    result = subprocess.run(["bitcoin-cli", f"-datadir={DATADIR}", "decodescript", hex_string], capture_output=True)
-    return json.loads(result.stdout)
+# def decode_script(hex_string):
+#     DATADIR = "/mnt/raid1_ssd_4tb/datasets/bitcoin/bitcoin-25.0/.bitcoin/"
+#     result = subprocess.run(["bitcoin-cli", f"-datadir={DATADIR}", "decodescript", hex_string], capture_output=True)
+#     return json.loads(result.stdout)
 
-def transaction_bytes_to_txid(byte_buffer):
+def raw_bytes_to_id(byte_buffer):
     sha = hashlib.sha256()
     sha.update(bytearray.fromhex(byte_buffer))
     checksum = sha.digest()

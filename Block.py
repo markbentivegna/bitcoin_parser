@@ -14,6 +14,8 @@ class Block:
         if self.has_length(blockchain, 8):
             self.magic_number = uint4(blockchain)
             self.block_size = uint4(blockchain)
+            if self.block_size == 0:
+                print('hello')
         else:
             self.continue_parsing = False
             return
@@ -29,6 +31,9 @@ class Block:
                 self.tx_list.append(tx)
         else:
             self.continue_parsing = False
+        self.block_hash = raw_bytes_to_id(self.block_header.get_bytes_string())
+        if self.block_hash == '14508459b221041eab257d2baaa7459775ba748246c8403609eb708f0e57e74b':
+            print('hello')
 
     def continue_parsing(self):
         return self.continue_parsing
@@ -44,7 +49,6 @@ class Block:
         blockchain.seek(current_position)
 
         temp_block_size = file_size - current_position
-        print(f"temp_block_size:\t {temp_block_size}")
         if temp_block_size < size:
             return False
         return True
@@ -54,19 +58,25 @@ class Block:
 
     def get_object_dict(self):
         return {
+            "_id": self.block_hash,
+            "object": "BLOCK",
             "magic number": self.magic_number,
             "block size": self.block_size,
-            "block header": self.block_header.get_object_dict(),
+            "version": self.block_header.version,
+            "previous hash": hash_string(self.block_header.previous_hash),
+            "merkle root": hash_string(self.block_header.merkle_hash),
+            "timestamp": self.block_header.decode_time(self.block_header.time),
+            "difficulty": self.block_header.bits,
+            "nonce": self.block_header.nonce,
             "transaction count": self.tx_count,
-            "transaction list": [tx.get_object_dict() for tx in self.tx_list]
+            "transaction list": [tx.get_object_dict() for tx in self.tx_list],
+            "transaction id list": [tx.txid for tx in self.tx_list]
         }
 
 
     def to_string(self):
-        print(f"")
         print(f"Magic Number:\t {self.magic_number}")
         print(f"Block Size:\t {self.block_size}")
-        print(f"")
         print(f"{'#'*10} Block Header {'#'*10}")
         print(f"{self.block_header.to_string()}")
         print(f"{'#' * 5} Tx count: {self.tx_count}")

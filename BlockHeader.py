@@ -31,3 +31,11 @@ class BlockHeader:
     def decode_time(self, time):
         utc_time = datetime.fromtimestamp(time)
         return utc_time.strftime("%Y-%m-%d %H:%M:%S.%f+00:00 (UTC)")
+    
+    def get_bytes_string(self):
+        return hash_string(encode_uint4(self.version)) \
+			+  hash_string(self.previous_hash[::-1]) \
+            +  hash_string(self.merkle_hash[::-1]) \
+            +  hash_string(encode_uint4(self.time)) \
+            + hash_string(encode_uint4(self.bits)) \
+            + hash_string(encode_uint4(self.nonce))

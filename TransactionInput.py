@@ -8,25 +8,26 @@ class TransactionInput:
 		self.script_length = varint(blockchain)
 		self.script_sig = blockchain.read(self.script_length)
 		self.seq_no = uint4(blockchain)
+		self.pubkey = None
+		self.address = None
 		self.decode_script_sig(self.script_sig)
 
 	def get_bytes_string(self):
-		return str_to_little_endian(self.prev_hash) + hash_string(encode_uint4(self.tx_out_id)) + compact_size(self.script_length)[:2] + hash_string(self.script_sig) + hash_string(encode_uint4(self.seq_no))
+		return str_to_little_endian(self.prev_hash) + hash_string(encode_uint4(self.tx_out_id)) + compact_size(self.script_length) + hash_string(self.script_sig) + hash_string(encode_uint4(self.seq_no))
 
 	def get_object_dict(self):
 		return {
 			"prev hash": hash_string(self.prev_hash),
-			"tx out index": self.decode_out_idx(self.tx_out_id),
+			"tx out index": hash_string(encode_uint4(self.tx_out_id)),
 			"script length": self.script_length,
 			"script": self.script,
 			"pubkey": self.pubkey,
 			"sequence": self.seq_no,
-			"address": self.address,
-			"transaction_type": self.transaction_type
+			"address": self.address
 		}
 
 	def to_string(self):
-		print(f"\tTx Out Index:\t {self.decode_out_idx(self.tx_out_id)}")
+		print(f"\tTx Out Index:\t {hash_string(encode_uint4(self.tx_out_id))}")
 		print(f"\tScript Length:\t {self.script_length}")
 		self.decode_script_sig(self.script_sig)
 		print(f"\tSequence:\t {self.seq_no}")
@@ -35,36 +36,17 @@ class TransactionInput:
 		hex_string = hash_string(data)
 		if 0xffffffff == self.tx_out_id:
 			self.script = None
-			self.pubkey = None
-			self.address = None
-			self.transaction_type = 'nonstandard'
 			return hex_string
-		script_length = int(hex_string[0:2],16)
+		try:
+			script_length = int(hex_string[0:2],16)
+		except:
+			script_length = 0
 		script_length *= 2
 		self.script = hex_string[2:2+script_length] 
-		print(f"\tScript:\t\t {self.script}")
 		try:
-			decoded_script = decode_script(hex_string)
-			self.transaction_type = decoded_script['segwit']['type']
-			print(f"\tTranaction Type: {self.transaction_type}")
-			self.address = decoded_script['segwit']['address']
-			print(f"\tAddress:\t {self.address}")
 			if SIGHASH_ALL != int(hex_string[script_length:script_length+2],16):
-				print(f"\t Script op_code is not SIGHASH_ALL")
-				self.pubkey = None
 				return hex_string
 			else: 
 				self.pubkey = hex_string[2+script_length+2:2+script_length+2+66]
-				print(f"\tInPubkey:\t {self.pubkey}")
 		except:
 			return hex_string
-
-			
-	def decode_out_idx(self,idx):
-		s = ""
-		if(idx == 0xffffffff):
-			s = " Coinbase with special index"
-			print(f"\tCoinbase Text:\t {hash_string(self.prev_hash)}")
-		else: 
-			print(f"\tPrev. Tx Hash:\t {hash_string(self.prev_hash)}")
-		return "%8x"%idx + s 
