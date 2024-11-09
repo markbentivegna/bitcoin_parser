@@ -1,10 +1,8 @@
-import sys
 import os
 import json
 from functools import reduce
 import unittest
 from models.BlockchainParser import BlockchainParser
-sys.path.append(f"{os.getcwd()}")
 
 
 class BlockchainParserTest(unittest.TestCase):
