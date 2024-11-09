@@ -1,3 +1,6 @@
+"""CLI tool for scraping Bitcoin blockchain. For more details please see BitcoinGraph 
+white paper"""
+
 import argparse
 from models.BlockchainParser import BlockchainParser
 

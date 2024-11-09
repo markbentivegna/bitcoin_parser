@@ -46,11 +46,11 @@ def varint(stream):
 
     if size < 0xfd:
         return size
-    elif size == 0xfd:
+    if size == 0xfd:
         return uint2(stream)
-    elif size == 0xfe:
+    if size == 0xfe:
         return uint4(stream)
-    elif size == 0xff:
+    if size == 0xff:
         return uint8(stream)
     else:
         return -1
@@ -59,9 +59,9 @@ def varint(stream):
 def compact_size(value):
     if value <= 252:
         return hash_string(struct.pack('B', value))
-    elif 252 < value <= 65535:
+    if 252 < value <= 65535:
         return f"fd{hash_string(encode_uint2(value))}"
-    elif 65535 < value <= 4294967295:
+    if 65535 < value <= 4294967295:
         return f"fe{hash_string(encode_uint4(value))}"
     else:
         return f"ff{hash_string(encode_uint8(value))}"

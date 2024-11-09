@@ -5,7 +5,7 @@ from utils import block_util
 
 
 class BlockUtilityTest(unittest.TestCase):
-    """Unit test class for Blockchain parsing regression test cases"""
+    """Unit test class for Blockchain helper methods test cases"""
 
     def test_encode_uint2(self):
         self.assertEqual(b'\x02\x00', block_util.encode_uint2(2))
