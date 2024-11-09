@@ -1,4 +1,4 @@
-from block_util import *
+from utils.block_util import *
 from models.TransactionInput import TransactionInput
 from models.TransactionOutput import TransactionOutput
 from models.TransactionWitness import TransactionWitness

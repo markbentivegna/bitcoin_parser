@@ -1,5 +1,5 @@
-from block_util import *
-from opcodes import *
+from utils.block_util import *
+from utils.opcodes import *
 
 class TransactionOutput:
 	def __init__(self, blockchain):

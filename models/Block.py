@@ -1,4 +1,4 @@
-from block_util import *
+from utils.block_util import *
 from models.Transaction import Transaction
 from models.BlockHeader import BlockHeader
 

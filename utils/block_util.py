@@ -4,7 +4,7 @@ import hashlib
 import re
 import bech32
 import binascii
-from opcodes import *
+from utils.opcodes import *
 
 def uint1(stream):
     return ord(stream.read(1))
@@ -144,9 +144,9 @@ def is_p2pkh(script_stack):
 
 
 def is_p2ms(script_stack):
-    return (script_stack[0] == "OP_"
+    return ("OP_" in script_stack[0]
             and script_stack[-1] == "OP_CHECKMULTISIG" 
-            and script_stack[-2] == "OP_"
+            and "OP_" in script_stack[-2]
     )
 
 def is_p2sh(script_stack):

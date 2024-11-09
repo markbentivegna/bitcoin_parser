@@ -1,5 +1,5 @@
 from datetime import datetime 
-from block_util import *
+from utils.block_util import *
 from models.Block import Block, Transaction
 from joblib import Parallel, delayed
 import pandas as pd
