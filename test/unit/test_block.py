@@ -1,3 +1,5 @@
+"""Unit tests designed to ensure that Bitcoin block and block_header classes work 
+as expected. For more details, see BitcoinGraph white paper"""
 from binascii import a2b_hex
 from io import BytesIO
 import unittest
@@ -6,6 +8,8 @@ from utils import block_util
 
 
 class BlockTest(unittest.TestCase):
+    """Unit test class for block and block_header test cases"""
+
     def test_block_header(self):
         block_header_data = ("01000000b715cee35e85ebf4ae9cfdf703ee359d76d87efd8ab0ba95a70400000000"
                              "00009d4c13a700ce40a21e78f8307ee485ec57923a8749026723a6e67729470dacf12"

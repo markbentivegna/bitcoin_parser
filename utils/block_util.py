@@ -1,3 +1,5 @@
+"""Helper methods for extracting raw data from the Bitcoin blockchain. For more details, see 
+BitcoinGraph white paper"""
 import hashlib
 import re
 import binascii
@@ -44,13 +46,14 @@ def varint(stream):
 
     if size < 0xfd:
         return size
-    if size == 0xfd:
+    elif size == 0xfd:
         return uint2(stream)
-    if size == 0xfe:
+    elif size == 0xfe:
         return uint4(stream)
-    if size == 0xff:
+    elif size == 0xff:
         return uint8(stream)
-    return -1
+    else:
+        return -1
 
 
 def compact_size(value):

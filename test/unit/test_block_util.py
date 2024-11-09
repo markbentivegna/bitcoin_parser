@@ -1,8 +1,12 @@
+"""Unit tests designed to ensure that Bitcoin blockchain parsing helper methods work 
+as expected. For more details, see BitcoinGraph white paper"""
 import unittest
 from utils import block_util
 
 
 class BlockUtilityTest(unittest.TestCase):
+    """Unit test class for Blockchain parsing regression test cases"""
+
     def test_encode_uint2(self):
         self.assertEqual(b'\x02\x00', block_util.encode_uint2(2))
 

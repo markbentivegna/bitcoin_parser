@@ -1,3 +1,5 @@
+"""Regresion tests designed to ensure that end to end Bitcoin blockchain parsing capabilities work 
+as expected. For more details, see BitcoinGraph white paper"""
 import os
 import json
 from functools import reduce
@@ -6,6 +8,8 @@ from models.BlockchainParser import BlockchainParser
 
 
 class BlockchainParserTest(unittest.TestCase):
+    """Unit test class for Blockchain parsing regression test cases"""
+
     def test_initial_block_file(self):
         blockchain_parser = BlockchainParser(
             f"{os.getcwd()}/test/blocks", 0, 0)

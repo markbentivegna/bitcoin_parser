@@ -1,3 +1,5 @@
+"""Unit tests designed to ensure that Bitcoin transaction class and subclasses work 
+as expected. For more details, see BitcoinGraph white paper"""
 from binascii import a2b_hex
 from io import BytesIO
 import unittest
@@ -9,6 +11,8 @@ from models.TransactionWitness import TransactionWitness
 
 
 class TransactionTest(unittest.TestCase):
+    """Unit test class for transaction class and subclasses test cases"""
+
     def test_transaction(self):
         tx_data = ("01000000017dc9c2cca6aaf622939e28e14a428d21c7be5ef2893cf575e2735e2b3215497e01"
                    "0000006b483045022100f3d0d3f0c529c19362173db79b1824e33bcc3015d7f069b7ae244401"
