@@ -48,7 +48,10 @@ class BlockUtilityTest(unittest.TestCase):
                           '5d1741144b8d677286b8ebe09c6b41e0f63fb9fc',
                           'OP_EQUALVERIFY',
                           'OP_CHECKSIG'],
-                         block_util.decipher_script(b'v\xa9\x14]\x17A\x14K\x8dgr\x86\xb8\xeb\xe0\x9ckA\xe0\xf6?\xb9\xfc\x88\xac'))
+                         block_util.decipher_script(
+                             b'v\xa9\x14]\x17A\x14K\x8dgr\x86\xb8\xeb\xe0\x9ckA\xe0\xf6?\xb9\xfc\x88\xac'
+        )
+        )
 
     def test_raw_bytes_to_id(self):
         self.assertEqual(

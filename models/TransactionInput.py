@@ -1,7 +1,11 @@
+"""Transaction inputs are spenders of Bitcoin transactions. For more details, see 
+BitcoinGraph white paper"""
 from utils import block_util
 
 
 class TransactionInput:
+    """Input section of Bitcoin transactions"""
+
     def __init__(self, blockchain):
         self.prev_hash = block_util.hash32(blockchain)
         self.tx_out_id = block_util.uint4(blockchain)

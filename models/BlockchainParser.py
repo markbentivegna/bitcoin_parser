@@ -1,9 +1,13 @@
+"""Parser file for scraping entirety of the Bitcoin blockchain. For more details, see 
+BitcoinGraph white paper"""
 from joblib import Parallel, delayed
 from models.Mempool import Mempool
 from models.Block import Block
 
 
 class BlockchainParser:
+    """Parser class for Bitcoin blockchain"""
+
     def __init__(self, blockchain_dir, blk_file_start, blk_file_end,
                  include_mempool=False, num_workers=16):
         self.num_workers = num_workers

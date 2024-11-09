@@ -1,8 +1,12 @@
+"""Memory pool contains all Bitcoin transactions in "pending" state. For more details, see 
+BitcoinGraph white paper"""
 from utils import block_util
 from models.Transaction import Transaction
 
 
 class Mempool:
+    """Mempool class containing non-validated Bitcoin transactions"""
+
     def __init__(self, blockchain):
         self.version = block_util.uint8(blockchain)
         self.transaction_count = block_util.uint8(blockchain)

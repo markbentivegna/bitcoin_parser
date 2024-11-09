@@ -1,7 +1,11 @@
+"""Witnesses are more secure unlocking mechanisms for Bitcoin transactions. For more details, 
+see BitcoinGraph white paper"""
 from utils import block_util
 
 
 class TransactionWitness:
+    """Witness section of Bitcoin transactions"""
+
     def __init__(self, blockchain):
         self.stack_count = block_util.varint(blockchain)
         self.script_lengths, self.items, self.items_deciphered = [], [], []

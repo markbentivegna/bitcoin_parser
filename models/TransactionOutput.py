@@ -1,7 +1,11 @@
+"""Transaction outputs are receivers of Bitcoin transactions. For more details, see 
+BitcoinGraph white paper"""
 from utils import block_util
 
 
 class TransactionOutput:
+    """Output section of Bitcoin transactions"""
+
     def __init__(self, blockchain):
         self.amount = block_util.uint8(blockchain)
         self.script_length = block_util.varint(blockchain)

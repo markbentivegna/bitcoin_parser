@@ -1,3 +1,5 @@
+"""Transactions contain inputs (spenders), outputs (receiver), and witnesses (similar to spenders). 
+For more details, see BitcoinGraph white paper"""
 from utils import block_util
 from models.TransactionInput import TransactionInput
 from models.TransactionOutput import TransactionOutput
@@ -5,6 +7,8 @@ from models.TransactionWitness import TransactionWitness
 
 
 class Transaction:
+    """Transaction class for Bitcoin blockchain containing inputs, outputs, and witnesses"""
+
     def __init__(self, blockchain):
         self.version = block_util.uint4(blockchain)
         self.input_count = block_util.varint(blockchain)

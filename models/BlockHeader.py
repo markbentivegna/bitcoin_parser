@@ -1,8 +1,12 @@
+"""Block header file containing metadata describing each block in the blockchain. For more
+details, see BitcoinGraph white paper"""
 from datetime import datetime
 from utils import block_util
 
 
 class BlockHeader:
+    """Block header class containing block metadata"""
+
     def __init__(self, blockchain):
         self.version = block_util.uint4(blockchain)
         self.previous_hash = block_util.hash32(blockchain)

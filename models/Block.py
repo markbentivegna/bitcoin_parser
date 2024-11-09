@@ -1,9 +1,13 @@
+"""Block object encapsulating all block and transaction data stored on the blockchain. For more
+details, see BitcoinGraph white paper"""
 from utils import block_util
 from models.Transaction import Transaction
 from models.BlockHeader import BlockHeader
 
 
 class Block:
+    """Block object encapsulating block and transaction data"""
+
     def __init__(self, blockchain):
         self.continue_parsing = True
         self.magic_number = 0
