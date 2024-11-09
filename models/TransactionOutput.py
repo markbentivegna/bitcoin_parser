@@ -11,7 +11,9 @@ class TransactionOutput:
         self.decode_script()
 
     def get_bytes_string(self):
-        return block_util.hash_string(block_util.encode_uint8(self.amount)) + block_util.compact_size(self.script_length) + block_util.hash_string(self.pubkey_script)
+        return block_util.hash_string(block_util.encode_uint8(self.amount)) + \
+            block_util.compact_size(self.script_length) + \
+            block_util.hash_string(self.pubkey_script)
 
     def get_object_dict(self):
         return {

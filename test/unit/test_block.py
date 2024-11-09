@@ -7,7 +7,9 @@ from utils import block_util
 
 class BlockTest(unittest.TestCase):
     def test_block_header(self):
-        block_header_data = '01000000b715cee35e85ebf4ae9cfdf703ee359d76d87efd8ab0ba95a7040000000000009d4c13a700ce40a21e78f8307ee485ec57923a8749026723a6e67729470dacf129d6a44ff71e0b1a09edefe9'
+        block_header_data = ("01000000b715cee35e85ebf4ae9cfdf703ee359d76d87efd8ab0ba95a70400000000"
+                             "00009d4c13a700ce40a21e78f8307ee485ec57923a8749026723a6e67729470dacf12"
+                             "9d6a44ff71e0b1a09edefe9")
         raw_bytes = a2b_hex(block_header_data)
         block_header = BlockHeader(BytesIO(raw_bytes))
 
@@ -21,4 +23,6 @@ class BlockTest(unittest.TestCase):
         self.assertEqual(block_header.version, 1)
         self.assertEqual(len(block_header.get_object_dict()), 6)
         self.assertEqual(block_header.get_bytes_string(
-        ), '01000000b715cee35e85ebf4ae9cfdf703ee359d76d87efd8ab0ba95a7040000000000009d4c13a700ce40a21e78f8307ee485ec57923a8749026723a6e67729470dacf129d6a44ff71e0b1a09edefe9')
+        ), ("01000000b715cee35e85ebf4ae9cfdf703ee359d76d87efd8ab0ba95a7040000000000009d4c13a700ce"
+            "40a21e78f8307ee485ec57923a8749026723a6e67729470dacf129d6a44ff71e0b1a09edefe9")
+        )

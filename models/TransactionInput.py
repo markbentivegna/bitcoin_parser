@@ -12,7 +12,11 @@ class TransactionInput:
             self.script_sig)
 
     def get_bytes_string(self):
-        return block_util.str_to_little_endian(self.prev_hash) + block_util.hash_string(block_util.encode_uint4(self.tx_out_id)) + block_util.compact_size(self.script_length) + block_util.hash_string(self.script_sig) + block_util.hash_string(block_util.encode_uint4(self.seq_no))
+        return block_util.str_to_little_endian(self.prev_hash) + \
+            block_util.hash_string(block_util.encode_uint4(self.tx_out_id)) + \
+            block_util.compact_size(self.script_length) + \
+            block_util.hash_string(
+                self.script_sig) + block_util.hash_string(block_util.encode_uint4(self.seq_no))
 
     def get_object_dict(self):
         return {

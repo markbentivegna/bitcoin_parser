@@ -3,7 +3,8 @@ from models.BlockchainParser import BlockchainParser
 
 parser = argparse.ArgumentParser(
     prog='BitcoinParser',
-    description='The most comprehensive open-sourced Python solution for parsing the Bitcoin blockchain'
+    description='The most comprehensive open-sourced Python solution for parsing the Bitcoin blockc\
+        hain'
 )
 
 parser.add_argument('blockchain_dir', help='Root directory of the blockchain')
