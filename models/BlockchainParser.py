@@ -4,7 +4,8 @@ from models.Block import Block
 
 
 class BlockchainParser:
-    def __init__(self, blockchain_dir, blk_file_start, blk_file_end, include_mempool=False, num_workers=16):
+    def __init__(self, blockchain_dir, blk_file_start, blk_file_end,
+                 include_mempool=False, num_workers=16):
         self.num_workers = num_workers
         self.blockchain_dir = blockchain_dir
         self.include_mempool = include_mempool

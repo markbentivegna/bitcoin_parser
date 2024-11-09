@@ -28,18 +28,19 @@ class TransactionTest(unittest.TestCase):
         self.assertEqual(tx.version, 1)
         self.assertEqual(tx.witnesses, [])
         self.assertEqual(tx.get_bytes_string(),
-                         ("01000000017dc9c2cca6aaf622939e28e14a428d21c7be5ef2893cf575e2735e2b3215497e"
-                          "010000006b483045022100f3d0d3f0c529c19362173db79b1824e33bcc3015d7f069b7ae24"
-                          "440114e5039002207eb23d92ca2758b9f6a43b7cbd265fb34c56d60faedaf04d805b928a26"
-                          "04223901210309e1b5495082f8aa6df37d8758379df33965596d028165ae8073b6219942fe"
-                          "bbffffffff0120f40e00000000001976a914acf3cb08d55344b6178b37ae58f171c769413f"
-                          "a888ac00000000")
+                         ("01000000017dc9c2cca6aaf622939e28e14a428d21c7be5ef2893cf575e2735e2b32154"
+                          "97e010000006b483045022100f3d0d3f0c529c19362173db79b1824e33bcc3015d7f069"
+                          "b7ae24440114e5039002207eb23d92ca2758b9f6a43b7cbd265fb34c56d60faedaf04d8"
+                          "05b928a2604223901210309e1b5495082f8aa6df37d8758379df33965596d028165ae80"
+                          "73b6219942febbffffffff0120f40e00000000001976a914acf3cb08d55344b6178b37a"
+                          "e58f171c769413fa888ac00000000")
                          )
         self.assertEqual(tx.get_inputs_bytes_string(),
-                         ("7dc9c2cca6aaf622939e28e14a428d21c7be5ef2893cf575e2735e2b3215497e010000006b"
-                          "483045022100f3d0d3f0c529c19362173db79b1824e33bcc3015d7f069b7ae24440114e503"
-                          "9002207eb23d92ca2758b9f6a43b7cbd265fb34c56d60faedaf04d805b928a260422390121"
-                          "0309e1b5495082f8aa6df37d8758379df33965596d028165ae8073b6219942febbffffffff")
+                         ("7dc9c2cca6aaf622939e28e14a428d21c7be5ef2893cf575e2735e2b3215497e0100000"
+                          "06b483045022100f3d0d3f0c529c19362173db79b1824e33bcc3015d7f069b7ae244401"
+                          "14e5039002207eb23d92ca2758b9f6a43b7cbd265fb34c56d60faedaf04d805b928a260"
+                          "4223901210309e1b5495082f8aa6df37d8758379df33965596d028165ae8073b6219942"
+                          "febbffffffff")
                          )
         self.assertEqual(tx.get_outputs_bytes_string(
         ), '20f40e00000000001976a914acf3cb08d55344b6178b37ae58f171c769413fa888ac')
@@ -64,11 +65,12 @@ class TransactionTest(unittest.TestCase):
                           "899022001fe272499ea32e6e1f6e45eb656973fbb55252f7acc64e1e1ac70837d5b7d9f"
                           "0121023dec241e4851d1ec1513a48800552bae7be155c6542629636bcaa672eee971dc"))
         self.assertEqual(tx_input.seq_no, 4294967295)
-        self.assertEqual(tx_input.get_bytes_string(), ("9945a5a440f2d3712ff095cb1efefada1cc52e139def"
-                         "edb92a313daed49d5678010000006a473044022031b6a6b79c666d5568a9ac7c116cacf277"
-                                                       "e11521aebc6794e2b415ef8c87c899022001fe272499ea32e6e1f6e45eb656973fbb55252f7"
-                                                       "acc64e1e1ac70837d5b7d9f0121023dec241e4851d1ec1513a48800552bae7be155c6542629"
-                                                       "636bcaa672eee971dcffffffff"))
+        self.assertEqual(tx_input.get_bytes_string(),
+                         ("9945a5a440f2d3712ff095cb1efefada1cc52e139def"
+                         "edb92a313daed49d5678010000006a473044022031b6a6b79c666d5568a9ac7c116cacf2"
+                          "77e11521aebc6794e2b415ef8c87c899022001fe272499ea32e6e1f6e45eb656973fbb5"
+                          "5252f7acc64e1e1ac70837d5b7d9f0121023dec241e4851d1ec1513a48800552bae7be1"
+                          "55c6542629636bcaa672eee971dcffffffff"))
         self.assertEqual(len(tx_input.get_object_dict()), 6)
 
     def test_transaction_output(self):
@@ -93,8 +95,9 @@ class TransactionTest(unittest.TestCase):
 
     def test_transaction_witness(self):
         tx_witness_data = ("024730440220537f470c1a18dc1a9d233c0b6af1d2ce18a07f3b244e4d9d54e0e60c34"
-                           "c55e67022058169cd11ac42374cda217d6e28143abd0e79549f7b84acc6542817466dc9b"
-                           "3001210301c1768b48843933bd7f0e8782716e8439fc44723d3745feefde2d57b761f503")
+                           "c55e67022058169cd11ac42374cda217d6e28143abd0e79549f7b84acc6542817466dc"
+                           "9b3001210301c1768b48843933bd7f0e8782716e8439fc44723d3745feefde2d57b761"
+                           "f503")
         raw_bytes = a2b_hex(tx_witness_data)
         tx_witness = TransactionWitness(BytesIO(raw_bytes))
 

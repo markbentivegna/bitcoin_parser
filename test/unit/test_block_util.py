@@ -55,7 +55,8 @@ class BlockUtilityTest(unittest.TestCase):
             '00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048',
             block_util.raw_bytes_to_id(
                 ("010000006fe28c0ab6f1b372c1a6a246ae63f74f931e8365e15a089c68d6190000000000982051fd"
-                 "1e4ba744bbbe680e1fee14677ba1a3c3540bf7b1cdb606e857233e0e61bc6649ffff001d01e36299")))
+                 "1e4ba744bbbe680e1fee14677ba1a3c3540bf7b1cdb606e857233e0e61bc6649ffff001d01e36299"
+                 )))
 
     def test_is_op_return(self):
         self.assertEqual(block_util.is_op_return(
