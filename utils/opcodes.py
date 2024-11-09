@@ -1,3 +1,5 @@
+"""Opcodes for Bitcoin Script language. For more details, see BitcoinGraph white paper"""
+
 PUSH_DATA = {
     '00': 'OP_0',
     '01': 'OP_PUSHBYTES_1',

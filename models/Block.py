@@ -1,8 +1,13 @@
-from utils.block_util import *
+"""Block object encapsulating all block and transaction data stored on the blockchain. For more
+details, see BitcoinGraph white paper"""
+from utils import block_util
 from models.Transaction import Transaction
 from models.BlockHeader import BlockHeader
 
+
 class Block:
+    """Block object encapsulating block and transaction data"""
+
     def __init__(self, blockchain):
         self.continue_parsing = True
         self.magic_number = 0
@@ -12,15 +17,15 @@ class Block:
         self.tx_list = []
 
         if self.has_length(blockchain, 8):
-            self.magic_number = uint4(blockchain)
-            self.block_size = uint4(blockchain)
+            self.magic_number = block_util.uint4(blockchain)
+            self.block_size = block_util.uint4(blockchain)
         else:
             self.continue_parsing = False
             return
-        
+
         if self.has_length(blockchain, self.block_size):
             self.set_header(blockchain)
-            self.tx_count = varint(blockchain)
+            self.tx_count = block_util.varint(blockchain)
             self.tx_list = []
 
             for i in range(self.tx_count):
@@ -29,17 +34,15 @@ class Block:
                 self.tx_list.append(tx)
         else:
             self.continue_parsing = False
-        self.block_hash = raw_bytes_to_id(self.block_header.get_bytes_string())
+        self.block_hash = block_util.raw_bytes_to_id(
+            self.block_header.get_bytes_string())
 
-    def continue_parsing(self):
-        return self.continue_parsing
-    
     def get_block_size(self):
         return self.block_size
-    
+
     def has_length(self, blockchain, size):
         current_position = blockchain.tell()
-        blockchain.seek(0,2)
+        blockchain.seek(0, 2)
 
         file_size = blockchain.tell()
         blockchain.seek(current_position)
@@ -48,7 +51,7 @@ class Block:
         if temp_block_size < size:
             return False
         return True
-    
+
     def set_header(self, blockchain):
         self.block_header = BlockHeader(blockchain)
 
@@ -59,8 +62,8 @@ class Block:
             "magic number": self.magic_number,
             "block size": self.block_size,
             "version": self.block_header.version,
-            "previous hash": hash_string(self.block_header.previous_hash),
-            "merkle root": hash_string(self.block_header.merkle_hash),
+            "previous hash": block_util.hash_string(self.block_header.previous_hash),
+            "merkle root": block_util.hash_string(self.block_header.merkle_hash),
             "timestamp": self.block_header.decode_time(self.block_header.time),
             "difficulty": self.block_header.bits,
             "nonce": self.block_header.nonce,
