@@ -1,4 +1,4 @@
-"""CLI tool for scraping Bitcoin blockchain. For more details please see BitcoinGraph 
+"""CLI tool for scraping Bitcoin blockchain. For more details please see BitcoinGraph
 white paper"""
 
 import argparse

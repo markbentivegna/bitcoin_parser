@@ -1,4 +1,4 @@
-"""Memory pool contains all Bitcoin transactions in "pending" state. For more details, see 
+"""Memory pool contains all Bitcoin transactions in "pending" state. For more details, see
 BitcoinGraph white paper"""
 from utils import block_util
 from models.Transaction import Transaction

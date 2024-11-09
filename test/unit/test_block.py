@@ -1,4 +1,4 @@
-"""Unit tests designed to ensure that Bitcoin block and block_header classes work 
+"""Unit tests designed to ensure that Bitcoin block and block_header classes work
 as expected. For more details, see BitcoinGraph white paper"""
 from binascii import a2b_hex
 from io import BytesIO

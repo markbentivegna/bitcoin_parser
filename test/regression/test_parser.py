@@ -1,4 +1,4 @@
-"""Regresion tests designed to ensure that end to end Bitcoin blockchain parsing capabilities work 
+"""Regresion tests designed to ensure that end to end Bitcoin blockchain parsing capabilities work
 as expected. For more details, see BitcoinGraph white paper"""
 import os
 import json

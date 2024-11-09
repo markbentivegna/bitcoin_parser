@@ -1,4 +1,4 @@
-"""Helper methods for extracting raw data from the Bitcoin blockchain. For more details, see 
+"""Helper methods for extracting raw data from the Bitcoin blockchain. For more details, see
 BitcoinGraph white paper"""
 import hashlib
 import re
@@ -52,8 +52,7 @@ def varint(stream):
         return uint4(stream)
     if size == 0xff:
         return uint8(stream)
-    else:
-        return -1
+    return -1
 
 
 def compact_size(value):
@@ -63,8 +62,7 @@ def compact_size(value):
         return f"fd{hash_string(encode_uint2(value))}"
     if 65535 < value <= 4294967295:
         return f"fe{hash_string(encode_uint4(value))}"
-    else:
-        return f"ff{hash_string(encode_uint8(value))}"
+    return f"ff{hash_string(encode_uint8(value))}"
 
 
 def str_to_little_endian(value):

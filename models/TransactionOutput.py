@@ -1,4 +1,4 @@
-"""Transaction outputs are receivers of Bitcoin transactions. For more details, see 
+"""Transaction outputs are receivers of Bitcoin transactions. For more details, see
 BitcoinGraph white paper"""
 from utils import block_util
 

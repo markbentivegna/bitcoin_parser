@@ -1,4 +1,4 @@
-"""Transaction inputs are spenders of Bitcoin transactions. For more details, see 
+"""Transaction inputs are spenders of Bitcoin transactions. For more details, see
 BitcoinGraph white paper"""
 from utils import block_util
 
