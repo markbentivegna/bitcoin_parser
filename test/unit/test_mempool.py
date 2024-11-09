@@ -1,11 +1,8 @@
-import os
-import sys
-sys.path.append(f"{os.getcwd()}")
-from models.Mempool import Mempool
 from binascii import a2b_hex
 from io import BytesIO
-from utils.block_util import *
 import unittest
+from models.Mempool import Mempool
+
 
 class MempoolTest(unittest.TestCase):
     def test_mempool(self):

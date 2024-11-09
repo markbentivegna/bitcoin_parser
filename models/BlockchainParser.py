@@ -1,6 +1,7 @@
+from joblib import Parallel, delayed
 from models.Mempool import Mempool
 from models.Block import Block
-from joblib import Parallel, delayed
+
 
 class BlockchainParser:
     def __init__(self, blockchain_dir, blk_file_start, blk_file_end, include_mempool=False, num_workers=16):
@@ -11,10 +12,10 @@ class BlockchainParser:
         self.blk_file_end = int(blk_file_end)
 
     def parse_mempool(self):
-        if self.include_mempool:
-            filename = f"{self.blockchain_dir}/mempool.dat"
-            with open(filename, 'rb') as blockchain:
-                mempool = Mempool(blockchain)
+        mempool = None
+        filename = f"{self.blockchain_dir}/mempool.dat"
+        with open(filename, 'rb') as blockchain:
+            mempool = Mempool(blockchain)
         return mempool
 
     def parse_blockchain(self):
@@ -22,22 +23,24 @@ class BlockchainParser:
             delayed(self.parse_blk_file)(i) for i in range(self.blk_file_start, self.blk_file_end+1)
         )
 
-        if self.parse_mempool:
-            blockchain_contents.append(self.parse_mempool)
+        if self.include_mempool:
+            blockchain_contents.append(self.parse_mempool())
 
-        print(f"Parsed {self.blk_file_end - self.blk_file_start} raw block files")
+        print(
+            f"Parsed {self.blk_file_end - self.blk_file_start} raw block files")
         return blockchain_contents
-    
+
     def parse_blk_file(self, i):
         block_number = 0xFF
-        
+
         file_number = "{:05}".format(i)
         filename = f"{self.blockchain_dir}/blk{file_number}.dat"
         blk_contents = []
-        
+
         try:
             with open(filename, 'rb') as blockchain:
-                print(f"Parsing blockchain head at file {filename.split('/')[-1]}")
+                print(
+                    f"Parsing blockchain head at file {filename.split('/')[-1]}")
                 continue_parsing = True
                 counter = 0
                 while continue_parsing:
@@ -52,5 +55,4 @@ class BlockchainParser:
                     print(f"Parsed {len(blk_contents)} blocks")
         except Exception as e:
             print(f"Error at file {filename}: {e}")
-            pass
         return blk_contents

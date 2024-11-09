@@ -1,15 +1,16 @@
-from utils.block_util import *
+from utils import block_util
 from models.Transaction import Transaction
+
 
 class Mempool:
     def __init__(self, blockchain):
-        self.version = uint8(blockchain)
-        self.transaction_count = uint8(blockchain)
+        self.version = block_util.uint8(blockchain)
+        self.transaction_count = block_util.uint8(blockchain)
         self.transaction_list = []
         for _ in range(self.transaction_count):
             transaction = Transaction(blockchain)
-            entry_time = uint8(blockchain)
-            fee = uint8(blockchain)
+            entry_time = block_util.uint8(blockchain)
+            fee = block_util.uint8(blockchain)
             self.transaction_list.append({
                 "transaction": transaction,
                 "entry_time": entry_time,
