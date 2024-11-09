@@ -1,0 +1,8 @@
+base58==2.1.1
+bech32==1.2.0
+coverage==7.6.4
+coveralls==4.0.1
+joblib==1.4.2
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
+setools==4.4.4
