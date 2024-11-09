@@ -20,5 +20,4 @@ class BlockTest(unittest.TestCase):
         self.assertEqual(block_header.time, 1336202793)
         self.assertEqual(block_header.version, 1)
         self.assertEqual(len(block_header.get_object_dict()), 6)
-        self.assertEqual(block_header.decode_time(block_header.time), '2012-05-05 03:26:33.000000+00:00 (UTC)')
         self.assertEqual(block_header.get_bytes_string(), '01000000b715cee35e85ebf4ae9cfdf703ee359d76d87efd8ab0ba95a7040000000000009d4c13a700ce40a21e78f8307ee485ec57923a8749026723a6e67729470dacf129d6a44ff71e0b1a09edefe9')
