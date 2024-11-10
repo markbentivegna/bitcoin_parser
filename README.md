@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/markbentivegna/bitcoin_parser/badge.svg?branch=main)](https://coveralls.io/github/markbentivegna/bitcoin_parser?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/markbentivegna/bitcoin_parser/badge.svg?branch=mark-test)](https://coveralls.io/github/markbentivegna/bitcoin_parser?branch=mark-test)
 
 # bitcoin_parser
 
