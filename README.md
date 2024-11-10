@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/markbentivegna/bitcoin_parser/badge.svg?branch=main)](https://coveralls.io/github/markbentivegna/bitcoin_parser?branch=main)
+
 # bitcoin_parser
 
 This Python module contains the Bitcoin parser described in BitcoinGraph. This scrapes the entire Bitcoin blockchain and memory pool. 
