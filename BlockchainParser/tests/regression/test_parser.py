@@ -12,31 +12,31 @@ class BlockchainParserTest(unittest.TestCase):
 
     def test_initial_block_file(self):
         blockchain_parser = BlockchainParser(
-            f"{os.getcwd()}/test/blocks", 0, 0)
+            f"{os.getcwd()}/tests/blocks", 0, 0)
 
         blockchain_contents = blockchain_parser.parse_blk_file(0)
         self.assertIsNotNone(blockchain_contents)
 
     def test_segwit_block_file(self):
         blockchain_parser = BlockchainParser(
-            f"{os.getcwd()}/test/blocks", 1, 1)
+            f"{os.getcwd()}/tests/blocks", 1, 1)
 
         blockchain_contents = blockchain_parser.parse_blk_file(1000)
         self.assertIsNotNone(blockchain_contents)
 
     def test_mempool(self):
         blockchain_parser = BlockchainParser(
-            f"{os.getcwd()}/test/blocks", 0, 0, include_mempool=True)
+            f"{os.getcwd()}/tests/blocks", 0, 0, include_mempool=True)
 
         mempool = blockchain_parser.parse_mempool()
         self.assertIsNotNone(mempool)
 
     def test_all(self):
         blockchain_parser = BlockchainParser(
-            f"{os.getcwd()}/test/blocks", 0, 0, include_mempool=True)
+            f"{os.getcwd()}/tests/blocks", 0, 0, include_mempool=True)
         blockchain_contents = []
         expected_output = {}
-        with open(f"{os.getcwd()}/test/regression/expected_output.json", "r") as file:
+        with open(f"{os.getcwd()}/tests/regression/expected_output.json", "r") as file:
             expected_output = json.load(file)
         for i in range(0, 4301, 100):
             block_content = blockchain_parser.parse_blk_file(i)

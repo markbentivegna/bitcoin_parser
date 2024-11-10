@@ -1,7 +1,7 @@
 """Block header file containing metadata describing each block in the blockchain. For more
 details, see BitcoinGraph white paper"""
 from datetime import datetime
-from utils import block_util
+from BlockchainParser.utils import block_util
 
 
 class BlockHeader:

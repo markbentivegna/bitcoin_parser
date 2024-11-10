@@ -1,9 +1,9 @@
 """Transactions contain inputs (spenders), outputs (receiver), and witnesses (similar to spenders).
 For more details, see BitcoinGraph white paper"""
-from utils import block_util
-from models.TransactionInput import TransactionInput
-from models.TransactionOutput import TransactionOutput
-from models.TransactionWitness import TransactionWitness
+from BlockchainParser.utils import block_util
+from BlockchainParser.models.TransactionInput import TransactionInput
+from BlockchainParser.models.TransactionOutput import TransactionOutput
+from BlockchainParser.models.TransactionWitness import TransactionWitness
 
 
 class Transaction:

@@ -1,6 +1,6 @@
 """Witnesses are more secure unlocking mechanisms for Bitcoin transactions. For more details,
 see BitcoinGraph white paper"""
-from utils import block_util
+from BlockchainParser.utils import block_util
 
 
 class TransactionWitness:

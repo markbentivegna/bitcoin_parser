@@ -1,8 +1,8 @@
 """Parser file for scraping entirety of the Bitcoin blockchain. For more details, see
 BitcoinGraph white paper"""
 from joblib import Parallel, delayed
-from models.Mempool import Mempool
-from models.Block import Block
+from BlockchainParser.models.Mempool import Mempool
+from BlockchainParser.models.Block import Block
 
 
 class BlockchainParser:

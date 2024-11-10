@@ -1,7 +1,7 @@
 """Memory pool contains all Bitcoin transactions in "pending" state. For more details, see
 BitcoinGraph white paper"""
-from utils import block_util
-from models.Transaction import Transaction
+from BlockchainParser.utils import block_util
+from BlockchainParser.models.Transaction import Transaction
 
 
 class Mempool:

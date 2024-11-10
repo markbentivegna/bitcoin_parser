@@ -1,8 +1,8 @@
 """Block object encapsulating all block and transaction data stored on the blockchain. For more
 details, see BitcoinGraph white paper"""
-from utils import block_util
-from models.Transaction import Transaction
-from models.BlockHeader import BlockHeader
+from BlockchainParser.utils import block_util
+from BlockchainParser.models.Transaction import Transaction
+from BlockchainParser.models.BlockHeader import BlockHeader
 
 
 class Block:
