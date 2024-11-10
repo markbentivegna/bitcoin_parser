@@ -2,4 +2,5 @@
 
 disable=missing-module-docstring,
         missing-function-docstring,
-        invalid-name
+        invalid-name,
+        import-error
