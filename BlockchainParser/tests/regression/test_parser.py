@@ -4,7 +4,7 @@ import os
 import json
 from functools import reduce
 import unittest
-from models.BlockchainParser import BlockchainParser
+from BlockchainParser.models.BlockchainParser import BlockchainParser
 
 
 class BlockchainParserTest(unittest.TestCase):
