@@ -3,11 +3,11 @@ as expected. For more details, see BitcoinGraph white paper"""
 from binascii import a2b_hex
 from io import BytesIO
 import unittest
-from utils import block_util
-from models.Transaction import Transaction
-from models.TransactionInput import TransactionInput
-from models.TransactionOutput import TransactionOutput
-from models.TransactionWitness import TransactionWitness
+from BlockchainParser.utils import block_util
+from BlockchainParser.models.Transaction import Transaction
+from BlockchainParser.models.TransactionInput import TransactionInput
+from BlockchainParser.models.TransactionOutput import TransactionOutput
+from BlockchainParser.models.TransactionWitness import TransactionWitness
 
 
 class TransactionTest(unittest.TestCase):

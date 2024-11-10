@@ -1,7 +1,7 @@
 """Unit tests designed to ensure that Bitcoin blockchain parsing helper methods work
 as expected. For more details, see BitcoinGraph white paper"""
 import unittest
-from utils import block_util
+from from BlockchainParser.utils import block_util
 
 
 class BlockUtilityTest(unittest.TestCase):

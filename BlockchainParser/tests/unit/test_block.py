@@ -3,8 +3,8 @@ as expected. For more details, see BitcoinGraph white paper"""
 from binascii import a2b_hex
 from io import BytesIO
 import unittest
-from models.BlockHeader import BlockHeader
-from utils import block_util
+from BlockchainParser.models.BlockHeader import BlockHeader
+from BlockchainParser.utils import block_util
 
 
 class BlockTest(unittest.TestCase):
