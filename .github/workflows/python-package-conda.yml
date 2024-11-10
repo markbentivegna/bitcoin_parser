@@ -34,7 +34,4 @@ jobs:
         conda install pytest
         coverage run -m pytest && coverage xml
     - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: coverage.xml
+      run: coveralls
